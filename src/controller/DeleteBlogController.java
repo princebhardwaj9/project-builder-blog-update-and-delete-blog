@@ -24,7 +24,7 @@ public class DeleteBlogController extends HttpServlet {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
@@ -37,7 +37,7 @@ public class DeleteBlogController extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private void deleteBlog(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	private void deleteBlog(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		BlogDaoImpl blogDAO = new BlogDaoImpl();

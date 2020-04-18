@@ -1,8 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -58,6 +58,9 @@ public class BlogController extends HttpServlet {
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -66,7 +69,7 @@ public class BlogController extends HttpServlet {
 		doGet(request, response);
 	}
 	private void listBlog(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
+			throws Exception {
 		BlogDaoImpl blogDAO = new BlogDaoImpl();
 		List<Blog> listBlog = blogDAO.selectAllBlogs();
 		request.setAttribute("listBlog", listBlog);

@@ -1,9 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import model.User;
 import utility.ConnectionManager;
@@ -24,7 +24,7 @@ public class UserDAO implements UserDaoInterface {
 			System.out.println(preparedStatement);
 			// Step 3: Execute the query or update query
 			result = preparedStatement.executeUpdate();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return result;
@@ -45,7 +45,7 @@ public class UserDAO implements UserDaoInterface {
 			ResultSet rs = preparedStatement.executeQuery();
 			status = rs.next();
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// process sql exception
 			System.out.println(e);
 		}

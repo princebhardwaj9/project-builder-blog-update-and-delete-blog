@@ -1,9 +1,10 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
-import javax.servlet.RequestDispatcher;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import model.Blog;
 @WebServlet(urlPatterns = {"/update"})
 public class UpdateBlogController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
        
 
 
@@ -33,7 +35,7 @@ public class UpdateBlogController extends HttpServlet {
 		blog.setBlogId(blogId);
 		blog.setBlogTitle(blogTitle);
 		blog.setBlogDescription(blogDescription);
-		blog.setPostedOn(postedOn);
+		blog.setPostedOn(dtf.format(postedOn));
 		
 		BlogDaoImpl blogDao = new BlogDaoImpl();
 		try {

@@ -31,7 +31,7 @@ public class EditViewController extends HttpServlet {
 		} catch (ServletException e) {
 			
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 		} 
@@ -43,7 +43,7 @@ public class EditViewController extends HttpServlet {
 		doGet(request, response);
 	}
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, ServletException, IOException {
+			throws Exception {
 		BlogDaoImpl blogDAO = new BlogDaoImpl();
 		int id = Integer.parseInt(request.getParameter("id"));
 		Blog existingBlog = blogDAO.selectBlog(id);
